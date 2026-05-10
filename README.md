@@ -72,6 +72,7 @@ Tooling
 2. Autenticacion
 - Login: valida credenciales y crea sesion por cookie HttpOnly.
 - Registro: crea usuario y solicita validacion por codigo SMS antes de continuar.
+- Registro de administrador: al seleccionar el rol "Administrador" se debe ingresar la clave `AdminKey123` en el campo `adminKey`.
 
 3. Operacion de VMs
 - En /portal se muestran metricas y actividad reciente.
@@ -162,3 +163,50 @@ src/
 - Implementado: autenticacion, perfil, dashboard, CRUD de VMs, realtime.
 - Parcial: modulo comercial (ordenes/suscripciones disponible por API).
 - Pendiente: UI completa de checkout y pantallas comerciales de compra.
+
+## Troubleshooting
+
+### Error 401 en autenticacion / CORS y cookies
+
+Si ves error 401 al intentar autenticarte en produccion en Render, el problema suele ser CORS + cookies en cross-origin.
+
+**Sintomas:**
+- Login/registro funcionan pero luego /api/auth/me devuelve 401.
+- Las cookies no viajan entre dominios.
+
+**Causas comunes:**
+1. Front y backend en dominios diferentes (e.g. ifx-front-end-prueba.onrender.com vs ifx-brack-end-prueba.onrender.com).
+2. Backend sin NODE_ENV=production (la cookie sale SameSite=Lax en desarrollo, no viaja en cross-site).
+3. Backend sin CORS_ORIGINS configurado.
+4. Frontend no mandando credenciales (cookies) en requests.
+
+**Solucion (Backend):**
+
+Configura en Render las variables de entorno del backend:
+
+```
+NODE_ENV=production
+CORS_ORIGINS=https://ifx-front-end-prueba.onrender.com
+```
+
+**Verificacion (Frontend):**
+
+El frontend ya esta configurado correctamente con `credentials: 'include'` en todas las llamadas HTTP.
+
+Verifica en DevTools (Application → Cookies):
+1. Despues de login, debe haber cookie `access_token` (o similar) con dominio `.onrender.com`.
+2. Cookie debe tener `SameSite=None` y `Secure=true` (en produccion).
+3. Si no aparece, el backend no esta seteando Set-Cookie.
+
+**Debug:**
+
+En navegador, ejecuta en console tras login:
+
+```javascript
+// Verifica si la cookie viaja
+fetch('https://ifx-brack-end-prueba.onrender.com/api/auth/me', {
+  credentials: 'include'
+}).then(r => r.json()).then(console.log);
+```
+
+Si devuelve 401, el backend necesita reconfiguración de CORS.
