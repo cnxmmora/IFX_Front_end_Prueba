@@ -176,9 +176,9 @@ function AuthHero() {
       </div>
 
       <div className="relative flex flex-wrap items-center gap-3 text-sm text-white/65">
-        <span>Admin demo: admin@testfx.local / Admin123!</span>
+        <span>Admin Key: admin@testfx.local / AdminKey123!</span>
         <span className="hidden h-1 w-1 rounded-full bg-white/30 sm:inline-flex" />
-        <span>Cliente demo: cliente@testfx.local / Cliente123!</span>
+        <span>Cliente Key: cliente@testfx.local / ClienteKey123!</span>
       </div>
     </section>
   );
