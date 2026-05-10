@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 const API_URL =
-  (import.meta.env.VITE_API_URL as string | undefined) ?? "https://bivi-connect-data-rewards.onrender.com";
+  (import.meta.env.VITE_API_URL as string | undefined) ?? "https://ifx-brack-end-prueba.onrender.com";
 
 type Check = {
   name: string;
