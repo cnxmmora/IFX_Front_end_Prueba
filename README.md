@@ -105,12 +105,23 @@ Flujo 3: Post-venta (suscripcion)
 
 Configura al menos:
 
-- VITE_API_URL: URL base del backend. Si no se define, usa http://localhost:4000.
+- VITE_API_URL: URL base del backend.
+
+Comportamiento por defecto del frontend si no defines VITE_API_URL:
+
+- En local: http://localhost:4000
+- En produccion: https://ifx-brack-end-prueba.onrender.com
 
 Ejemplo:
 
 ```env
 VITE_API_URL=http://localhost:4000
+```
+
+Ejemplo para produccion:
+
+```env
+VITE_API_URL=https://ifx-brack-end-prueba.onrender.com
 ```
 
 ## Instalacion y ejecucion

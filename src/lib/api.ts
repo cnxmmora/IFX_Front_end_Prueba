@@ -1,4 +1,8 @@
-const API_URL = (import.meta.env.VITE_API_URL as string | undefined) ?? 'http://localhost:4000'
+const API_URL =
+  (import.meta.env.VITE_API_URL as string | undefined) ??
+  (import.meta.env.MODE === "production"
+    ? "https://ifx-brack-end-prueba.onrender.com"
+    : "http://localhost:4000")
 
 async function apiFetch<T>(endpoint: string, options: RequestInit = {}): Promise<T> {
   const response = await fetch(`${API_URL}${endpoint}`, {

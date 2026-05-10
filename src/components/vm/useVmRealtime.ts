@@ -3,7 +3,11 @@ import { useEffect, useRef } from "react";
 import type { QueryClient } from "@tanstack/react-query";
 import type { VmRecord } from "@/lib/api";
 
-const SOCKET_URL = (import.meta.env.VITE_API_URL as string | undefined) ?? "http://localhost:4000";
+const SOCKET_URL =
+  (import.meta.env.VITE_API_URL as string | undefined) ??
+  (import.meta.env.MODE === "production"
+    ? "https://ifx-brack-end-prueba.onrender.com"
+    : "http://localhost:4000");
 
 type VmRealtimeEvent = "vm:created" | "vm:updated" | "vm:deleted";
 
