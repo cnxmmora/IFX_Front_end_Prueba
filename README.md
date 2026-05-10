@@ -214,12 +214,16 @@ Si devuelve 401, el backend necesita reconfiguración de CORS.
 
 ## Bitacora de IA
 
-Los problemas mas complejos no fueron de arquitectura sino de validaciones y algunos bugs de sisntaxys
-Una vez creada lzas tablas, le pase las rutas para que reemplazara las que ya habia hecho con esa y ajustara validaciones para el CRUD ademas de mirar si todas las variables estaban bien hechas, en la platilla de node, tome partes de proyectos en los que he trabajado antes para ir contruyendo las peticiones, incluyendo aquellas que son de Twilio y SMS
+Para el Front, tome una plantilla de Dashboard que ya habia trabajado y le cambie los estilos y el flujo, con ello le pedi que me ayudara a revisar y cambiar el tema de los estilos, luego le pase el back que ya tenia, sobre la estructura que estaba manejando, y le pase las APIS con los payload que tenia que usar, para que reemplazara las que ya tenia, con eso pudo crear las conecciones nesesarias para el proyecto y yo tome partido a conectar cada cada una, ya en mi experiencia me tome a intalar todas las dependecias que nesecitaba y empece a testear en local las conecciones
 
-Yo trabaje con una plantilla de NODE JS primero en un INDEX antes de hacer toda la migracion a NEST, con ello el PROMPT fue asi
+Promt usados
+"La ruta del login no esta conectando, dice que tiene problemas de autenticaciones"
+"Analiza las variables de entorno mira si estan conectando con el servidor local"
+"Tengo un problema con el envio del mensaje a twilio, separa el geocodificador solo para enviar el numero, en backend se encargara de poner el +57 del telefono"
+"Te voy a pasar unos requerimientos de proyecto, dime que carpetas hacen falta para separa los archivos para craer un diseño atomico sobre el proyecto"
+"separa los servicios en un archivo a parte"
+"tengo el endpoint de produccion para el back, añadelo a las variables globales"
+"revisa la estrcutura del projecto, no m esta compilando el DIST para deployar"
 
-"Tengo este proyecto de Node con estas tecnoligias aplicadas, nesecito que revises las tablas creadas para un proyecto de Maquinas Virtuales, ayudame a revisar, corregir y crear estas rutas, con base las que ya tengo y mira si hace falta alguna, manten el formato que ya tengo, y no borres el keep alive, ademas toma el archivo de integracion de Twilio y dejalo como endpoint para hacer las peticiones al servicio de SMS"
 
-Tambie tuve que borrar cosas que no nesecitaba, pero deje el sistema que mantiene el servicio despierto "keep alive", esto fue para el back
 
